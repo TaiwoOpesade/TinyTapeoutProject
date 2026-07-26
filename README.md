@@ -1,24 +1,18 @@
-![](../../workflows/gds/badge.svg) ![](../../workflows/docs/badge.svg) ![](../../workflows/wokwi_test/badge.svg) ![](../../workflows/fpga/badge.svg)
+![](../../workflows/gds/badge.svg) ![](../../workflows/docs/badge.svg) ![](../../workflows/test/badge.svg) ![](../../workflows/fpga/badge.svg)
 
-# Tiny Tapeout Wokwi Project Template
+# 4-bit Adder / Accumulator - Tiny Tapeout project
 
-- [Read the documentation for project](docs/info.md)
+A 4-bit accumulator register that adds, loads or clears on each clock edge,
+built entirely from primitive logic gates (AND, OR, XOR, NOT, a 2-to-1 MUX
+and a D flip-flop) - no behavioural `+`, `*` or `?:` anywhere in the design.
+
+- [Read the full documentation for this project](docs/info.md)
 
 ## What is Tiny Tapeout?
 
 Tiny Tapeout is an educational project that aims to make it easier and cheaper than ever to get your digital and analog designs manufactured on a real chip.
 
 To learn more and get started, visit https://tinytapeout.com.
-
-## Wokwi Projects
-
-Edit the [info.yaml](info.yaml) and change the `wokwi_id` to the ID of your Wokwi project. You can find the ID in the URL of your project, it's the big number after `wokwi.com/projects/`.
-
-The GitHub action will automatically fetch the digital netlist from Wokwi and build the ASIC files.
-
-## Enable GitHub actions to build the results page
-
-- [Enabling GitHub Pages](https://tinytapeout.com/faq/#my-github-action-is-failing-on-the-pages-part)
 
 ## Resources
 
@@ -31,7 +25,6 @@ The GitHub action will automatically fetch the digital netlist from Wokwi and bu
 ## What next?
 
 - [Submit your design to the next shuttle](https://app.tinytapeout.com/).
-- Edit [this README](README.md) and explain your design, how it works, and how to test it.
 - Share your project on your social network of choice:
   - LinkedIn [#tinytapeout](https://www.linkedin.com/search/results/content/?keywords=%23tinytapeout) [@TinyTapeout](https://www.linkedin.com/company/100708654/)
   - Mastodon [#tinytapeout](https://chaos.social/tags/tinytapeout) [@matthewvenn](https://chaos.social/@matthewvenn)
