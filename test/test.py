@@ -16,12 +16,14 @@ async def step(dut):
 
     Chaining bare `await ClockCycles(dut.clk, 1)` calls back-to-back (with
     no simulation time passing between them) was observed to coalesce onto
-    the same edge instead of advancing a fresh cycle each time. Adding a
-    1ns settle after every cycle keeps each step's ClockCycles wait
-    starting from a clean, non-edge-aligned point.
+    the same edge instead of advancing a fresh cycle each time - and in
+    gate-level (UNIT_DELAY=#1) simulation, real per-gate propagation delays
+    mean a 1ns settle isn't quite enough margin either. 100ns is still under
+    1% of the 10us clock period, so it stays a "same cycle" read while
+    giving every synthesized gate plenty of room to settle.
     """
     await ClockCycles(dut.clk, 1)
-    await Timer(1, unit="ns")
+    await Timer(100, unit="ns")
 
 
 def read_uo(dut):
@@ -98,7 +100,7 @@ async def test_project(dut):
     assert uo & 0xF == 7
 
     dut.rst_n.value = 0
-    await Timer(1, unit="ns")
+    await Timer(100, unit="ns")  # still << one clock period, well before the next edge
     uo = read_uo(dut)
     assert uo & 0xF == 0
     assert (uo >> 5) & 1 == 1
